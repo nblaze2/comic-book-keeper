@@ -9,6 +9,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1 class="nav-title">Comic Book Keeper</h1>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="sub-nav">
+      <%= yield %>
+    </div>
   </body>
 </html>
