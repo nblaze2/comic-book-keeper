@@ -39,7 +39,6 @@ feature 'user creates an account', %q(
     fill_in 'Password', with: 'password123'
     fill_in 'Password confirmation', with: 'password123'
     click_on 'Create Account'
-    # should validate_email_format_of(:email).with_message('is not not a valid email address')
     expect(page).to have_content('is not a valid email address')
     expect(page).to have_content('Sign up')
   end
