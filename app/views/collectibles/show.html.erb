@@ -1,0 +1,39 @@
+<div class="collectible-details">
+
+<div>
+  <strong><%= @collectible.publisher %></strong><br>
+  (<%= @collectible.year %>)
+  <strong>
+    <%= @collectible.name_of_item %> Vol #: <%= @collectible.vol_num %> Issue #: <%= @collectible.issue_num %>
+  </strong>
+  <br>
+  <%= @collectible.story_title %>
+  <br><br>
+  Cover Artist: <%= @collectible.cover_artist %>
+  Artist: <%= @collectible.artist %>
+  <% if @collectible.artist2 %>
+    Artist 2: <%= @collectible.artist2 %>
+    <% if @collectible.artist3 %>
+      Artist 3: <%= @collectible.artist3 %>
+    <% end %>
+  <% end %>
+
+  Writer: <%= @collectible.writer %>
+  <br>
+  Condition: <%= @collectible.condition %>
+  <br>
+  Estimated Value: <%= @collectible.est_value %>
+  <br><br>
+  Notes: <br>
+  <p><%= @collectible.notes %></p>
+</div>
+<div>
+  <%= link_to 'Edit', edit_collectible_path(@collectible) %> |
+  <%= link_to 'Delete', @collectible, method: :delete %>
+</div>
+
+<br/>
+
+<%= link_to 'Back', collectibles_path %>
+
+</div>

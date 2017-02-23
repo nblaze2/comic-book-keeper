@@ -1,0 +1,97 @@
+<%= form_for(collectible) do |f| %>
+  <% if collectible.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(collectible.errors.count, "error") %> prohibited this collectible from being saved:</h2>
+
+      <ul>
+      <% collectible.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :media %>
+    <%= f.select :media, [ 'Comic', 'Magazine', 'Book', 'Other' ] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name_of_item, "Name of Item" %>
+    <%= f.text_field :name_of_item %>
+  </div>
+
+  <div class="field">
+    <%= f.label :story_title, "Story Title" %>
+    <%= f.text_field :story_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vol_num, "Volume Number" %>
+    <%= f.number_field :vol_num %>
+  </div>
+
+  <div class="field">
+    <%= f.label :issue_num, "Issue Number" %>
+    <%= f.number_field :issue_num %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cover_artist, "Cover Artist" %>
+    <%= f.text_field :cover_artist %>
+  </div>
+
+  <div class="field">
+    <%= f.label :artist %>
+    <%= f.text_field :artist %>
+  </div>
+
+  <div class="field">
+    <%= f.label :artist2 %>
+    <%= f.text_field :artist2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :artist3 %>
+    <%= f.text_field :artist3 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :writer %>
+    <%= f.text_field :writer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year %>
+    <%= f.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :publisher %>
+    <%= f.text_field :publisher %>
+  </div>
+
+  <div class="field">
+    <%= f.label :condition %>
+    <%= f.select :condition, [ 'NM', 'VF', 'FN', 'VG', 'GD', 'FR', 'PR' ] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :est_value, "Estimated Value" %>
+    <%= f.number_field :est_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :keep, "Keep?" %>
+    <%= f.check_box :keep %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Collectible"%>
+  </div>
+<% end %>
