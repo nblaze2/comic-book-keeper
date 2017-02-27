@@ -28,7 +28,7 @@ feature 'authenticated user adds a comic', %q(
     select 'NM', from: 'Condition'
     fill_in 'Estimated Value', with: '20'
     fill_in 'Notes', with: 'Graphic Novel collects issues #1-5'
-    click_on 'Create Collectible'
+    click_on 'Submit'
 
     expect(page).to have_content('Collectible was successfully created.')
     # Create pop up window that asks if user wants to add another?
@@ -40,7 +40,7 @@ feature 'authenticated user adds a comic', %q(
     login_as(user, :scope => :user)
     visit '/'
     click_on 'Add a Collectible'
-    click_on 'Create Collectible'
+    click_on 'Submit'
     expect(page).to have_content("errors prohibited")
     expect(page).to have_content('New Collectible')
   end
@@ -53,7 +53,7 @@ feature 'authenticated user adds a comic', %q(
     fill_in 'Year', with: '216'
     select 'Comic', from: 'Media'
     fill_in 'Name of Item', with: 'Doctor Strange'
-    click_on 'Create Collectible'
+    click_on 'Submit'
 
     expect(page).to have_content('Year is the wrong length')
     expect(page).to have_content('New Collectible')
@@ -110,7 +110,6 @@ feature 'authenticated user views comic details', %q(
     expect(page).to have_content('142')
     expect(page).to have_content('Notes')
     expect(page).to have_content("The first issue of new title 'Uncanny X-Men'")
-    expect(page).to have_content('Post a Review')
   end
 end
 
@@ -134,7 +133,8 @@ feature 'authenticated user updates a comics information', %q(
     expect(page).to have_content('Update Information')
     fill_in 'Name of Item', with: 'X-Men'
     fill_in 'Issue Number', with: '141'
-    click_on 'Update Information'
+    fill_in 'Notes', with: 'Last issue of volume one X-Men'
+    click_on 'Submit'
     expect(page).to have_content('X-Men')
     expect(page).to_not have_content('Uncanny')
     expect(page).to have_content('141')
@@ -150,7 +150,7 @@ feature 'authenticated user updates a comics information', %q(
     click_on 'Details'
     click_on 'Edit'
     fill_in 'Name of Item', with: ''
-    click_on 'Update Information'
+    click_on 'Submit'
     expect(page).to have_content('error')
     expect(page).to have_content('Update Information')
   end
@@ -176,7 +176,7 @@ feature 'authenticated user deletes a comic', %q(
     expect(page).to have_content('1990')
     click_on 'Delete'
     # figure out how to still use prompt in test...
-    expect(page).to have_content('Movie was successfully destroyed.')
+    expect(page).to have_content('Collectible was successfully destroyed.')
     expect(page).to_not have_content('Die Hard 2')
     expect(page).to_not have_content('1990')
   end
