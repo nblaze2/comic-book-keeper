@@ -1,1 +1,57 @@
-<p>blah</p>
+
+<h1 class="table-title">Collectibles</h1>
+
+<%= form_tag(collectibles_path, :method => 'get', id: "search") do %>
+  <p class="search-bar">
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <strong><th>Keep?</th></strong>
+      <strong><th>Media</th></strong>
+      <strong><th>Publisher</th></strong>
+      <strong><th>Name of Item</th></strong>
+      <strong><th>Story Title</th></strong>
+      <strong><th>Year</th></strong>
+      <strong><th>Volume Num</th></strong>
+      <strong><th>Issue Num</th></strong>
+      <strong><th>Cover Artist</th></strong>
+      <strong><th>Artist</th></strong>
+      <strong><th>Writer</th></strong>
+      <strong><th>Condition</th></strong>
+      <strong><th>Estimated Value</th></strong>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collectibles.each do |collectible| %>
+      <tr>
+        <td><strong><%= collectible.keep %></strong></td>
+        <td><%= collectible.media %></td>
+        <td><%= collectible.publisher %></td>
+        <td><%= collectible.name_of_item %></td>
+        <td><%= collectible.story_title %></td>
+        <td><%= collectible.year %></td>
+        <td><%= collectible.vol_num %></td>
+        <td><%= collectible.issue_num %></td>
+        <td><%= collectible.cover_artist %></td>
+        <td><%= collectible.artist %></td>
+        <td><%= collectible.writer %></td>
+        <td><%= collectible.condition %></td>
+        <td><%= collectible.est_value %></td>
+        <td><%= link_to 'Details', collectible %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="new-collectible">
+  <%= link_to 'Add a Collectible', new_collectible_path %>
+</div>

@@ -17,25 +17,25 @@ ActiveRecord::Schema.define(version: 20170216181156) do
 
   create_table "collectibles", force: :cascade do |t|
     t.integer  "user_id"
+    t.boolean  "keep",         default: false
     t.integer  "year"
-    t.string   "media",      null: false
-    t.string   "title",      null: false
+    t.string   "media",                        null: false
+    t.string   "name_of_item",                 null: false
+    t.string   "story_title"
+    t.integer  "vol_num"
     t.integer  "issue_num"
     t.string   "publisher"
-    t.string   "writer"
+    t.string   "cover_artist"
     t.string   "artist"
+    t.string   "artist2"
+    t.string   "artist3"
+    t.string   "writer"
     t.string   "condition"
-    t.decimal  "value"
-    t.text     "desciption"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist"], name: "index_collectibles_on_artist", using: :btree
-    t.index ["media"], name: "index_collectibles_on_media", using: :btree
-    t.index ["publisher"], name: "index_collectibles_on_publisher", using: :btree
-    t.index ["title"], name: "index_collectibles_on_title", using: :btree
+    t.decimal  "est_value"
+    t.text     "notes"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["user_id"], name: "index_collectibles_on_user_id", using: :btree
-    t.index ["writer"], name: "index_collectibles_on_writer", using: :btree
-    t.index ["year"], name: "index_collectibles_on_year", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
