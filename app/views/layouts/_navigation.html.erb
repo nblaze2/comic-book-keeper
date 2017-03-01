@@ -1,9 +1,11 @@
 <div class="nav-bar">
-<%= link_to 'Movie Index', '/' %> |
-<%= link_to 'About', '/pages/about' %>
+<%= link_to 'Collectibles Index', '/' %> |
+<%= link_to 'FAQ', '/pages/faq' %>
 <% if user_signed_in? %>
   <div class="auth-links">
-
+    <% if current_user.admin? %>
+      <%= link_to 'Admin Tools', users_path %> |
+    <% end %>
     <%= link_to 'Edit User Profile', edit_user_registration_path %> |
     <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
   </div>

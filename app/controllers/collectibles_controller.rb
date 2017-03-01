@@ -1,8 +1,14 @@
 class CollectiblesController < ApplicationController
   before_action :set_collectible, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user
 
   def index
-    @collectibles = Collectible.all
+    if !current_user.admin?
+      @collectibles = current_user.collectibles
+    else
+      @user = User.find(params[:user_id])
+      @collectibles = @user.collectibles
+    end
     # @media = { "Comic" => 1, "Magazine" => 2, "Book" => 3, "Other" => 4 }
     # if params[:search]
     #   @collectibles = Collectible.search(params[:search]).order(year: :desc)

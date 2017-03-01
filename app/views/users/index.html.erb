@@ -1,0 +1,27 @@
+
+<h1>ADMIN TOOLS</h1>
+
+<h2 class="table-title">Users</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><strong><%= user.name %></strong></td>
+        <td><%= user.email %></td>
+        <% unless user.admin? %>
+          <td><%= link_to 'View Collectibles', user_collectibles_path(user.id) %></td>
+          <td><%= link_to 'Delete User', registration_path(current_user), method: :delete %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

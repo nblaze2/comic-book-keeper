@@ -71,7 +71,6 @@ feature 'authenticated user views list of collectibles', %q(
   So that I can pick items to review
 
 ) do
-
   scenario 'successfully views a list of collectibles' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)
