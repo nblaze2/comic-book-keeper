@@ -1,7 +1,7 @@
 
 <h1 class="table-title">Collectibles</h1>
 
-<%= form_tag(collectibles_path, :method => 'get', id: "search") do %>
+<%= form_tag(user_collectibles_path, :method => 'get', id: "search") do %>
   <p class="search-bar">
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
@@ -44,7 +44,7 @@
         <td><%= collectible.writer %></td>
         <td><%= collectible.condition %></td>
         <td><%= collectible.est_value %></td>
-        <td><%= link_to 'Details', collectible %></td>
+        <td><%= link_to 'Details', user_collectible_path(@user, collectible) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -53,5 +53,5 @@
 <br>
 
 <div class="new-collectible">
-  <%= link_to 'Add a Collectible', new_collectible_path %>
+  <%= link_to 'Add a Collectible', new_user_collectible_path %>
 </div>

@@ -1,38 +1,38 @@
 class CollectiblesController < ApplicationController
   before_action :set_collectible, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, except: [:index]
   before_action :authenticate_user
 
   def index
-    if !current_user.admin?
-      @collectibles = current_user.collectibles
+    if params[:user_id]
+      if current_user.admin?
+        @user = User.find(params[:user_id])
+        @collectibles = @user.collectibles.order(name_of_item: :desc)
+      else
+        @user = current_user
+        @collectibles = current_user.collectibles.order(name_of_item: :desc)
+      end
     else
-      @user = User.find(params[:user_id])
-      @collectibles = @user.collectibles
+      redirect_to new_user_session_path, notice: 'You must be signed in.'
     end
-    # @media = { "Comic" => 1, "Magazine" => 2, "Book" => 3, "Other" => 4 }
-    # if params[:search]
-    #   @collectibles = Collectible.search(params[:search]).order(year: :desc)
-    # else
-    #   @collectibles = Collectible.all.order(year: :desc)
-    # end
   end
 
   def show
   end
 
   def new
-    @collectible = Collectible.new
+    @collectible = @user.collectibles.new
   end
 
   def edit
   end
 
   def create
-    @collectible = Collectible.new(collectible_params)
+    @collectible = @user.collectibles.new(collectible_params)
     @collectible.user = current_user
 
     if @collectible.save
-      redirect_to @collectible, notice: 'Collectible was successfully created.'
+      redirect_to user_collectibles_path(current_user), notice: 'Collectible was successfully created.'
       # prompt to add another entry?
     else
       render :new
@@ -41,7 +41,7 @@ class CollectiblesController < ApplicationController
 
   def update
     if @collectible.update(collectible_params)
-      redirect_to @collectible, notice: 'Collectible was successfully updated.'
+      redirect_to user_collectible_path(@collectible), notice: 'Collectible was successfully updated.'
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class CollectiblesController < ApplicationController
 
   def destroy
     @collectible.destroy
-    redirect_to collectibles_url, notice: 'Collectible was successfully destroyed.'
+    redirect_to user_collectibles_path(@user, @collectibles), notice: 'Collectible was successfully destroyed.'
   end
 
   private
@@ -58,7 +58,10 @@ class CollectiblesController < ApplicationController
     @collectible = Collectible.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def collectible_params
     params.require(:collectible).permit(
       :keep, :year, :media, :name_of_item,

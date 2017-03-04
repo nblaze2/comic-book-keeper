@@ -1,5 +1,9 @@
 <div class="nav-bar">
-<%= link_to 'Collectibles Index', '/' %> |
+<% if user_signed_in? %>
+  <%= link_to 'Collectibles Index', user_collectibles_path(current_user) %> |
+<% else %>
+  <%= link_to 'Collectibles Index', new_user_session_path %> |
+<% end %>
 <%= link_to 'FAQ', '/pages/faq' %>
 <% if user_signed_in? %>
   <div class="auth-links">

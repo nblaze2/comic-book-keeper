@@ -6,7 +6,7 @@ feature 'authenticated user adds a comic', %q(
 
   As an authenticated user
   I want to add an item
-  So that others can review it
+  So that I can keep track of it
 
 ) do
 
@@ -74,15 +74,15 @@ feature 'authenticated user views list of collectibles', %q(
   scenario 'successfully views a list of collectibles' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)
+    comics = []
     25.times do
-      FactoryGirl.create(:collectible, user_id: user.id)
+      comics << FactoryGirl.create(:collectible, user_id: user.id)
     end
     visit '/'
-
+    expect(page).to have_content(comics.first.issue_num)
+    expect(page).to have_content(comics.last.issue_num)
     expect(page).to have_content('Uncanny X-Men')
     expect(page).to have_content('1981')
-    expect(page).to have_content('142')
-    expect(page).to have_content('166')
     expect(page).to have_content('Marvel')
     expect(page).to have_content('Chris Claremont')
   end
@@ -167,9 +167,7 @@ feature 'authenticated user deletes a comic', %q(
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)
     comic = FactoryGirl.create(:collectible, name_of_item: 'Die Hard 2', year: '1990', user_id: user.id)
-
     visit '/'
-
     click_on 'Details'
     expect(page).to have_content('Die Hard 2')
     expect(page).to have_content('1990')

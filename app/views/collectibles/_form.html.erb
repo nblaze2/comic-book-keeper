@@ -1,4 +1,4 @@
-<%= form_for(collectible) do |f| %>
+<%= form_for [@user, @collectible] do |f| %>
   <% if collectible.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(collectible.errors.count, "error") %> prohibited this collectible from being saved:</h2>

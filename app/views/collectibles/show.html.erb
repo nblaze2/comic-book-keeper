@@ -28,12 +28,12 @@
   <p><%= @collectible.notes %></p>
 </div>
 <div>
-  <%= link_to 'Edit', edit_collectible_path(@collectible) %> |
-  <%= link_to 'Delete', @collectible, method: :delete %>
+  <%= link_to 'Edit', edit_user_collectible_path(current_user, @collectible) %> |
+  <%= link_to 'Delete', user_collectible_path(@user, @collectible), method: :delete %>
 </div>
 
 <br/>
 
-<%= link_to 'Back', collectibles_path %>
+<%= link_to 'Back', user_collectibles_path(@collectible) %>
 
 </div>

@@ -6,4 +6,14 @@ class UsersController < ApplicationController
       redirect_to '/'
     end
   end
+
+  def destroy
+    if current_user.admin?
+      @user = User.find(params[:id])
+      @user.destroy
+      redirect_to '/'
+    else
+      redirect_to '/', notice: 'You are not authorized to do that action.'
+    end
+  end
 end

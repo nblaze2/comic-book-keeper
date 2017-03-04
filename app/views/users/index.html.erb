@@ -19,7 +19,7 @@
         <td><%= user.email %></td>
         <% unless user.admin? %>
           <td><%= link_to 'View Collectibles', user_collectibles_path(user.id) %></td>
-          <td><%= link_to 'Delete User', registration_path(current_user), method: :delete %></td>
+          <td><%= link_to 'Delete User', user_path(user), method: :delete %></td>
         <% end %>
       </tr>
     <% end %>
