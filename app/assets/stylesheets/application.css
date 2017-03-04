@@ -1,3 +1,34 @@
+body {
+  margin: 0;
+}
+
+header {
+  font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+}
+
+.nav-title {
+   margin: 0;
+   color: #FFF5EE;
+   background-color: darkorange;
+   padding: 12px 8px;
+   font-size: 30pt;
+ }
+
+.nav-bar {
+  background-color: orange;
+  font-size: 12pt;
+  color: black;
+  padding: 4pt;
+}
+
+.auth-links {
+  float: right;
+}
+
+.sub-nav {
+  margin-left: 30pt;
+}
+
 /*.home-page {
   background-image: url(https://cdn.pixabay.com/photo/2014/10/20/13/10/comics-495258_960_720.jpg);
   background-attachment: fixed;
