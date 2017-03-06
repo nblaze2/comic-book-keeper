@@ -41,7 +41,7 @@ class CollectiblesController < ApplicationController
 
   def update
     if @collectible.update(collectible_params)
-      redirect_to user_collectible_path(@collectible), notice: 'Collectible was successfully updated.'
+      redirect_to user_collectible_path(@user, @collectible), notice: 'Collectible was successfully updated.'
     else
       render :edit
     end

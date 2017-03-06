@@ -3,19 +3,20 @@ body {
 }
 
 header {
-  font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+  font-family: Rockwell, serif;
 }
 
 .nav-title {
    margin: 0;
-   color: #FFF5EE;
-   background-color: darkorange;
+   color: gold;
+   background-color: steelblue;
    padding: 12px 8px;
-   font-size: 30pt;
+   font-size: 28pt;
+
  }
 
 .nav-bar {
-  background-color: orange;
+  background-color: #b0c4de;
   font-size: 12pt;
   color: black;
   padding: 4pt;

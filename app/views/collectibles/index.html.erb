@@ -31,7 +31,11 @@
   <tbody>
     <% @collectibles.each do |collectible| %>
       <tr>
-        <td><%= collectible.keep %></td>
+        <td>
+          <% if collectible.keep %>
+            <p>&#9989</p>
+          <% end %>
+        </td>
         <td><%= collectible.media %></td>
         <td><%= collectible.publisher %></td>
         <td><%= collectible.name_of_item %></td>
