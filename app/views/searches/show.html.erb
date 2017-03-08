@@ -1,0 +1,56 @@
+<h1>Search Results</h1>
+
+<p><%= link_to 'Back', new_user_search_path %></p>
+
+<% if @search.search_collectibles(@user).empty? %>
+
+  <p>No Records Found</p>
+
+<% else %>
+
+  <br>
+    <table class="search-results">
+      <thead>
+        <tr>
+          <strong><th>Keep?</th></strong>
+          <strong><th>Media</th></strong>
+          <strong><th>Publisher</th></strong>
+          <strong><th>Name of Item</th></strong>
+          <strong><th>Story Title</th></strong>
+          <strong><th>Year</th></strong>
+          <strong><th>Vol. #</th></strong>
+          <strong><th>Issue #</th></strong>
+          <strong><th>Artist</th></strong>
+          <strong><th>Writer</th></strong>
+          <strong><th>Condition</th></strong>
+          <strong><th>Estimated Value</th></strong>
+          <th colspan="12"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @search.search_collectibles(@user).each do |collectible| %>
+        <tr>
+          <td>
+            <% if collectible.keep %>
+            <p>&#9989</p>
+            <% end %>
+          </td>
+          <td><%= collectible.media %></td>
+          <td><%= collectible.publisher %></td>
+          <td><%= collectible.name_of_item %></td>
+          <td><%= collectible.story_title %></td>
+          <td><%= collectible.year %></td>
+          <td><%= collectible.vol_num %></td>
+          <td><%= collectible.issue_num %></td>
+          <td><%= collectible.artist %></td>
+          <td><%= collectible.writer %></td>
+          <td><%= collectible.condition %></td>
+          <td><%= collectible.est_value %></td>
+          <td><%= link_to 'Details', user_collectible_path(@user, collectible) %></td>
+          <td><%= link_to 'Add Similar', new_user_collectible_path(@user, collectible) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>

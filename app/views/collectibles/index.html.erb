@@ -3,11 +3,13 @@
 
 <%= form_tag(user_collectibles_path, :method => 'get', id: "search") do %>
   <p class="search-bar">
+    <strong>Search Item Names: </strong>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= submit_tag "Search", :name_of_item => nil %> /
+    <%= link_to "Advanced Search", new_user_search_path %>
   </p>
 <% end %>
-
+<br>
 <table>
   <thead>
     <tr>
@@ -17,14 +19,13 @@
       <strong><th>Name of Item</th></strong>
       <strong><th>Story Title</th></strong>
       <strong><th>Year</th></strong>
-      <strong><th>Volume Num</th></strong>
-      <strong><th>Issue Num</th></strong>
-      <strong><th>Cover Artist</th></strong>
+      <strong><th>Vol. #</th></strong>
+      <strong><th>Issue #</th></strong>
       <strong><th>Artist</th></strong>
       <strong><th>Writer</th></strong>
       <strong><th>Condition</th></strong>
       <strong><th>Estimated Value</th></strong>
-      <th colspan="3"></th>
+      <th colspan="12"></th>
     </tr>
   </thead>
 
@@ -43,12 +44,12 @@
         <td><%= collectible.year %></td>
         <td><%= collectible.vol_num %></td>
         <td><%= collectible.issue_num %></td>
-        <td><%= collectible.cover_artist %></td>
         <td><%= collectible.artist %></td>
         <td><%= collectible.writer %></td>
         <td><%= collectible.condition %></td>
         <td><%= collectible.est_value %></td>
         <td><%= link_to 'Details', user_collectible_path(@user, collectible) %></td>
+        <td><%= link_to 'Add Similar', new_user_collectible_path(@user, collectible) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,35 @@
+<h1>Advanced Search</h1>
+
+<%= form_for [@user, @search] do |s| %>
+
+  <div class="field">
+    <%= s.label :keywords %><br>
+    <%= s.text_field :keywords %>
+  </div>
+
+  <br>
+  <div class="field">
+    <%= s.label :publisher %><br>
+    <%= s.select :publisher, options_for_select(@publishers), :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <p><%= s.label :year %> - <%= s.text_field :year, size: 10 %></p>
+  </div>
+
+  <div class="field">
+    <p><%= s.label :min_price, "Min Price" %> - <%= s.text_field :min_price, size: 10 %></p>
+    <p><%= s.label :max_price, "Max Price" %> - <%= s.text_field :max_price, size: 10 %></p>
+  </div>
+
+  <div class="field">
+    <%= s.label :condition %>
+    <%= s.select :condition, options_for_select(@conditions), :include_blank => true %>
+  </div>
+  <br>
+  <div>
+    <%= s.submit "Search" %>
+  </div>
+<% end %>
+<br>
+<%= link_to 'Back', user_collectibles_path(current_user) %>

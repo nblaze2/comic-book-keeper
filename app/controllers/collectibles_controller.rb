@@ -7,10 +7,12 @@ class CollectiblesController < ApplicationController
     if params[:user_id]
       if current_user.admin?
         @user = User.find(params[:user_id])
-        @collectibles = @user.collectibles.order(name_of_item: :desc)
-      else
+        @collectibles = @user.collectibles.search(params[:search])
+        @collectibles = @collectibles.order(name_of_item: :asc)
+      else # should be elsif?
         @user = current_user
-        @collectibles = current_user.collectibles.order(name_of_item: :desc)
+        @collectibles = @user.collectibles.search(params[:search])
+        @collectibles = @collectibles.order(name_of_item: :asc)
       end
     else
       redirect_to new_user_session_path, notice: 'You must be signed in.'
@@ -21,7 +23,13 @@ class CollectiblesController < ApplicationController
   end
 
   def new
-    @collectible = @user.collectibles.new
+    if params[:format]
+      collectible_id = params[:format]
+      @collectible = Collectible.find(collectible_id)
+      @collectible = Collectible.new(@collectible.attributes)
+    else
+      @collectible = Collectible.new(user: @user)
+    end
   end
 
   def edit
@@ -33,7 +41,6 @@ class CollectiblesController < ApplicationController
 
     if @collectible.save
       redirect_to user_collectibles_path(current_user), notice: 'Collectible was successfully created.'
-      # prompt to add another entry?
     else
       render :new
     end

@@ -22,4 +22,12 @@ class Collectible < ApplicationRecord
   validates :notes, length: { maximum: 500 }
 
   belongs_to :user
+
+  def self.search(search)
+    if search
+      where(["name_of_item ILIKE ?", "%#{search}%"])
+    else
+      all
+    end
+  end
 end
