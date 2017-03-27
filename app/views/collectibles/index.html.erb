@@ -98,7 +98,7 @@
         <td><%= collectible.condition %></td>
         <td>
 					<% if collectible.est_value %>
-						$<%= collectible.est_value %></td>
+						<%= number_to_currency(collectible.est_value) %></td>
 					<% else %>
 						-
 					<% end %>
