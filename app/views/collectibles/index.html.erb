@@ -96,7 +96,12 @@
         <td><%= collectible.artist %></td>
         <td><%= collectible.writer %></td>
         <td><%= collectible.condition %></td>
-        <td><%= collectible.est_value %></td>
+        <td>
+					<% if collectible.est_value %>
+						$<%= collectible.est_value %></td>
+					<% else %>
+						-
+					<% end %>
         <td>
           <%= link_to user_collectible_path(@user, collectible) do %>
             <button class="btn btn-primary btn-xs" data-title="Details" data-toggle="modal" data-target="#edit" >
