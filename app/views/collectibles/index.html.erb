@@ -2,118 +2,120 @@
 	<div class="row">
 		<h1 class="text-center">Collectibles Index</h1>
 	</div>
-
-
-
-<br>
-<div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-	<div class="row">
-		<div class="col-sm-6">
-			<div id="datatable_filter" class="dataTables_filter">
-        <%= form_tag(user_collectibles_path, :method => 'get', id: "search") do %>
-          <p class="search-bar">
-            <strong>Search Item Names: </strong>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name_of_item => nil %> /
-            <%= link_to "Advanced Search", new_user_search_path %>
-          </p>
-        <% end %>
+	<br>
+</div>
+<div class="container">
+	<div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="datatable_filter" class="dataTables_filter">
+					<%= form_tag(user_collectibles_path, :method => 'get', id: "search") do %>
+					<p class="search-bar">
+						<strong>Search Item Names: </strong>
+						<%= text_field_tag :search, params[:search] %>
+						<%= submit_tag "Search", :name_of_item => nil %> /
+						<%= link_to "Advanced Search", new_user_search_path %>
+					</p>
+					<% end %>
+				</div>
 			</div>
 		</div>
-	</div>
-<div class="row">
+		<div class="row">
 
-    <div class="col-md-12">
-<table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-  <thead>
-    <tr role="row">
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Keep?</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Media</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Publisher</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Name of Item</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Story Title</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Year</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Vol. #</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Issue #</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Artist</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Writer</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Condition</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Estimated Value</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Details</th></strong>
-      <strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Add Similar</th></strong>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <strong><th rowspan="1" colspan="1">Keep?</th></strong>
-      <strong><th rowspan="1" colspan="1">Media</th></strong>
-      <strong><th rowspan="1" colspan="1">Publisher</th></strong>
-      <strong><th rowspan="1" colspan="1">Name of Item</th></strong>
-      <strong><th rowspan="1" colspan="1">Story Title</th></strong>
-      <strong><th rowspan="1" colspan="1">Year</th></strong>
-      <strong><th rowspan="1" colspan="1">Vol. #</th></strong>
-      <strong><th rowspan="1" colspan="1">Issue #</th></strong>
-      <strong><th rowspan="1" colspan="1">Artist</th></strong>
-      <strong><th rowspan="1" colspan="1">Writer</th></strong>
-      <strong><th rowspan="1" colspan="1">Condition</th></strong>
-      <strong><th rowspan="1" colspan="1">Estimated Value</th></strong>
-      <strong><th rowspan="1" colspan="1">Details</th></strong>
-      <strong><th rowspan="1" colspan="1">Add Similar</th></strong>
-    </tr>
-  </tfoot>
+			<div class="col-md-12">
+				<table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+					<thead>
+						<tr role="row">
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Keep?</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Media</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Publisher</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Name of Item</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Story Title</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Year</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Vol. #</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Issue #</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Artist</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Writer</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Condition</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Estimated Value</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Details</th></strong>
+							<strong><th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Add Similar</th></strong>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<strong><th rowspan="1" colspan="1">Keep?</th></strong>
+							<strong><th rowspan="1" colspan="1">Media</th></strong>
+							<strong><th rowspan="1" colspan="1">Publisher</th></strong>
+							<strong><th rowspan="1" colspan="1">Name of Item</th></strong>
+							<strong><th rowspan="1" colspan="1">Story Title</th></strong>
+							<strong><th rowspan="1" colspan="1">Year</th></strong>
+							<strong><th rowspan="1" colspan="1">Vol. #</th></strong>
+							<strong><th rowspan="1" colspan="1">Issue #</th></strong>
+							<strong><th rowspan="1" colspan="1">Artist</th></strong>
+							<strong><th rowspan="1" colspan="1">Writer</th></strong>
+							<strong><th rowspan="1" colspan="1">Condition</th></strong>
+							<strong><th rowspan="1" colspan="1">Estimated Value</th></strong>
+							<strong><th rowspan="1" colspan="1">Details</th></strong>
+							<strong><th rowspan="1" colspan="1">Add Similar</th></strong>
+						</tr>
+					</tfoot>
 
-  <tbody>
-    <% @collectibles.each do |collectible| %>
-      <tr>
-        <td>
-          <% if collectible.keep %>
-            <p>&#9989</p>
-          <% end %>
-        </td>
-        <td><%= collectible.media %></td>
-        <td><%= collectible.publisher %></td>
-        <td><%= collectible.name_of_item %></td>
-        <td><%= collectible.story_title %></td>
-        <td><%= collectible.year %></td>
-        <td><%= collectible.vol_num %></td>
-        <td><%= collectible.issue_num %></td>
-        <td><%= collectible.artist %></td>
-        <td><%= collectible.writer %></td>
-        <td><%= collectible.condition %></td>
-        <td>
-					<% if collectible.est_value %>
-						<%= number_to_currency(collectible.est_value) %></td>
-					<% else %>
-						-
+					<tbody>
+						<% @collectibles.each do |collectible| %>
+						<tr>
+							<td>
+								<% if collectible.keep %>
+								<p>&#9989</p>
+								<% end %>
+							</td>
+							<td><%= collectible.media %></td>
+							<td><%= collectible.publisher %></td>
+							<td><%= collectible.name_of_item %></td>
+							<td><%= collectible.story_title %></td>
+							<td><%= collectible.year %></td>
+							<td><%= collectible.vol_num %></td>
+							<td><%= collectible.issue_num %></td>
+							<td><%= collectible.artist %></td>
+							<td><%= collectible.writer %></td>
+							<td><%= collectible.condition %></td>
+							<td>
+								<% if collectible.est_value %>
+								<%= number_to_currency(collectible.est_value) %></td>
+								<% else %>
+								-
+								<% end %>
+								<td>
+									<%= link_to user_collectible_path(@user, collectible) do %>
+										<button class="btn btn-primary btn-xs" data-title="Details" data-toggle="modal" data-target="#edit" >
+										<span class="glyphicon glyphicon-pencil"></span>
+									<% end %>
+								</td>
+								<td>
+									<%= link_to new_user_collectible_path(@user, collectible) do %>
+										<button class="btn btn-success btn-xs" data-title="Add Similar">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+									<% end %>
+								</td>
+						</tr>
 					<% end %>
-        <td>
-          <%= link_to user_collectible_path(@user, collectible) do %>
-            <button class="btn btn-primary btn-xs" data-title="Details" data-toggle="modal" data-target="#edit" >
-            <span class="glyphicon glyphicon-pencil"></span>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to new_user_collectible_path(@user, collectible) do %>
-            <button class="btn btn-success btn-xs" data-title="Add Similar">
-            <span class="glyphicon glyphicon-plus-sign"></span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-</div>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 
 <div class="new-collectible">
-  <%= link_to 'Add a Collectible', new_user_collectible_path %>
+	<%= link_to new_user_collectible_path, :class => "btn btn-primary btn-lg" do %>
+		Add a Collectible
+	<% end %>
 </div>
+
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#datatable').dataTable();
+	$('#datatable').dataTable();
 
-   $("[data-toggle=tooltip]").tooltip();
+	$("[data-toggle=tooltip]").tooltip();
 
 } );
 

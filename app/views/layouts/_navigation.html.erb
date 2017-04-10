@@ -4,8 +4,9 @@
 <% else %>
   <%= link_to 'Collectibles Index', new_user_session_path %> |
 <% end %>
+<%= link_to 'Advanced Search', new_user_search_path(current_user) %> |
 <%= link_to 'FAQ', '/pages/faq' %> |
-<%= link_to 'Grading Guide', 'http://comicspriceguide.com/comic-book-grading' %> | 
+<%= link_to 'Grading Guide', 'http://comicspriceguide.com/comic-book-grading' %> |
 <%= link_to 'Pricing Guide', 'http://comicspriceguide.com/comic-book-search' %>
 <% if user_signed_in? %>
   <div class="auth-links">

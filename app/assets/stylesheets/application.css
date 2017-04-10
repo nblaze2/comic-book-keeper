@@ -1,6 +1,9 @@
 body {
   margin: 0;
 }
+.new-container {
+  margin-bottom: 10px;
+}
 
 header {
   font-family: Rockwell, serif;
@@ -11,7 +14,7 @@ header {
    color: gold;
    background-color: steelblue;
    padding: 12px 8px;
-   font-size: 28pt;
+   font-size: 40pt;
 
  }
 
