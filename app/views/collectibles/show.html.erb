@@ -22,7 +22,12 @@
   <br>
   Condition: <%= @collectible.condition %>
   <br>
-  Estimated Value: <%= @collectible.est_value %>
+  Estimated Value:
+  <% if @collectible.est_value %>
+  <%= number_to_currency(@collectible.est_value) %></td>
+  <% else %>
+  -
+  <% end %>
   <br><br>
   Notes: <br>
   <p><%= @collectible.notes %></p>
