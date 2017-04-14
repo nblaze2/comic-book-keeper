@@ -5,30 +5,33 @@ body {
   margin-bottom: 10px;
 }
 
-header {
+.navbar {
   font-family: Rockwell, serif;
 }
 
-.nav-title {
-   margin: 0;
-   color: gold;
-   background-color: steelblue;
-   padding: 12px 8px;
-   font-size: 40pt;
-
- }
-
-.nav-bar {
-  background-color: #b0c4de;
-  font-size: 12pt;
-  color: black;
-  padding: 4pt;
+li .glyphicon {
+  margin-right: 2px;
 }
 
-.auth-links {
-  float: right;
+.jumbo-box {
+  margin-top: 60px;
 }
 
+.jumbotron .jumbo-title {
+  color: #ffeb26;
+  text-shadow: 3px 3px 3px #000;
+  font-weight: bold;
+  text-align: center;
+}
+
+.jumbotron {
+  padding: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-image: url('http://images.techtimes.com/data/images/full/222728/the-best-apps-to-download-for-those-who-cant-get-enough-of-comic-book-culture.jpg');
+  background-position: center;
+  font-family: Rockwell, serif;
+}
 
 /*.home-page {
   background-image: url(https://cdn.pixabay.com/photo/2014/10/20/13/10/comics-495258_960_720.jpg);
@@ -36,55 +39,53 @@ header {
 }*/
 
 .pagination>li {
-display: inline;
-padding: 0;
-margin: 0;
-border: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
+
 .modal-backdrop {
   z-index: -1;
 }
-/*
-Fix to show in full screen demo
-*/
-iframe
-{
-    height:700px;
+
+iframe {
+  height:700px;
 }
 
 .btn {
-display: inline-block;
-padding: 6px 12px;
-margin-bottom: 0;
-font-size: 14px;
-font-weight: 400;
-line-height: 1.42857143;
-text-align: center;
-white-space: nowrap;
-vertical-align: middle;
--ms-touch-action: manipulation;
-touch-action: manipulation;
-cursor: pointer;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-background-image: none;
-border: 1px solid transparent;
-border-radius: 4px;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 
 .btn-primary {
-color: #fff;
-background: #428bca;
-border-color: #357ebd;
-box-shadow:none;
+  color: #fff;
+  background: #428bca;
+  border-color: #357ebd;
+  box-shadow:none;
 }
 .btn-success {
-color: #fff;
-background: #d9534f;
-border-color: #d9534f;
-box-shadow:none;
+  color: #fff;
+  background: #d9534f;
+  border-color: #d9534f;
+  box-shadow:none;
 }
 
 .glyphicon {

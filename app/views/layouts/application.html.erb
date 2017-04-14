@@ -1,82 +1,108 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ComicBookKeeper</title>
-    <%= csrf_meta_tags %>
-    <meta name="viewport" content="width = device-width, initial-scale = 1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>ComicBookKeeper</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
-    <%= javascript_include_tag 'application' %>
-    <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.js"></script>
-    <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+  <%= javascript_include_tag 'application' %>
+  <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.js"></script>
+  <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
 
-  </head>
+</head>
 
-  <body>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/pages/home">Comic Book Keeper</a>
-          </div>
-          <div>
-            <ul class="nav navbar-nav">
-              <li>
-                <% if user_signed_in? %>
-                <%= link_to 'Collectibles Index', user_collectibles_path(current_user) %>
-                <% else %>
-                <%= link_to 'Collectibles Index', new_user_session_path %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to 'Advanced Search', new_user_search_path(current_user) %>
-              </li>
-              <li>
-                <%= link_to 'FAQ', '/pages/faq' %>
-              </li>
-              <li>
-                <%= link_to 'Grading Guide', 'http://comicspriceguide.com/comic-book-grading' %>
-              </li>
-              <li>
-                <%= link_to 'Pricing Guide', 'http://comicspriceguide.com/comic-book-search' %>
-              </li>
-              <% if user_signed_in? %>
-              <div class="auth-links">
-                <% if current_user.admin? %>
-                <li>
-                  <%= link_to 'Admin Tools', users_path %>
-                </li>
-                <li>
-                  <%= link_to 'Edit User Profile', edit_user_registration_path %>
-                </li>
-                <li>
-                  <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
-                </li>
-                <% end %>
-              </div>
-              <% else %>
-              <div class="auth-links">
-                <%= link_to 'Sign in', new_user_session_path %>
-                <%= link_to 'Sign up', new_user_registration_path %>
-              </div>
-              <% end %>
-            </ul>
-          </div>
-
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/pages/home">Comic Book Keeper</a>
       </div>
-      <h1 class="nav-title">Comic Book Keeper</h1>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="sub-nav">
-      <%= yield %>
+      <div>
+        <ul class="nav navbar-nav">
+          <li>
+            <% if user_signed_in? %>
+            <%= link_to 'Collectibles Index', user_collectibles_path(current_user) %>
+            <% else %>
+            <%= link_to 'Collectibles Index', new_user_session_path %>
+            <% end %>
+          </li>
+          <li>
+            <% if user_signed_in? %>
+            <%= link_to 'Advanced Search', new_user_search_path(current_user) %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to 'FAQ', '/pages/faq' %>
+          </li>
+          <li>
+            <%= link_to 'Grading Guide', 'http://comicspriceguide.com/comic-book-grading' %>
+          </li>
+          <li>
+            <%= link_to 'Pricing Guide', 'http://comicspriceguide.com/comic-book-search' %>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <li>
+                <%= link_to users_path do %>
+                  <span class="glyphicon glyphicon-briefcase"></span> Admin Tools
+                <% end %>
+              </li>
+            <% end %>
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                <span class="glyphicon glyphicon-user"></span> Edit User Profile
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, :method=>'delete' do %>
+                <span class="glyphicon glyphicon-log-out"></span> Sign Out
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to new_user_session_path do %>
+                <span class="glyphicon glyphicon-log-in"></span> Sign In
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path do %>
+                <span class="glyphicon glyphicon-user"></span> Sign Up
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
+  </div>
+</nav>
+<div class="jumbo-box">
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="jumbo-title">Comic Book Keeper</h1>
     </div>
-  </nav>
-  </body>
+  </div>
+</div>
+<div class="container">
+  <div class="alert alert-success">
+    <strong>
+      <p class="notice"><%= notice %></p>
+    </strong>
+  </div>
+</div>
+<p class="alert"><%= alert %></p>
+<div class="sub-nav">
+  <%= yield %>
+</div>
+</body>
 </html>
