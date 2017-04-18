@@ -91,3 +91,11 @@ iframe {
 .glyphicon {
   color: white;
 }
+
+.field {
+  margin-bottom: 10px;
+}
+
+.actions {
+  margin-bottom: 10px;
+}

@@ -1,15 +1,46 @@
-<div class="home-page">
-  <h1>Comic Book Keeper</h1>
-  <p>
-    <%= link_to 'Collectibles Index', '/' %>
-  </p>
-  <p>
-    <%= link_to 'FAQ', '/pages/faq' %>
-  </p>
-  <p>
-    <%= link_to 'Comic Grading Guide', 'http://comicspriceguide.com/comic-book-grading' %>
-  </p>
-  <p>
-    <%= link_to 'Pricing Guide', 'http://comicspriceguide.com/comic-book-search' %>
-  </p>
-</div>
+<div class="row" id="about">
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="http://icons.iconarchive.com/icons/mattahan/ultrabuuf/128/Comics-Hulk-Fist-Folder-icon.png" alt="...">
+      <div class="caption">
+        <h3>Collectibles Index</h3>
+        <p>The index of all your comics and collectibles. You must be logged in to access your index.</p>
+        <% if user_signed_in? %>
+        <%= link_to user_collectibles_path(current_user), :class =>"btn btn-primary" do %>Visit Index
+        <% end %>
+        <% else %>
+        <%= link_to new_user_session_path, :class =>"btn btn-primary" do %>Visit Index
+        <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="http://icons.iconarchive.com/icons/acidrums4/betelgeuse/128/Categories-system-help-icon.png" alt="...">
+          <div class="caption">
+            <h3>FAQ</h3>
+            <p>This app is fairly straight forward, but it is designed to help organize comic book collections.</p>
+            <p><a href="/pages/faq" class="btn btn-primary">Visit FAQ</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="http://icons.iconarchive.com/icons/chrisbanks2/cold-fusion-hd/128/comic-icon.png" alt="...">
+          <div class="caption">
+            <h3>Guides</h3>
+          </div>
+          <table class="table no-bottom-margin">
+            <tbody>
+              <tr>
+                <td><a href="http://comicspriceguide.com/comic-book-search">Pricing Guide</a></td>
+              </tr>
+              <tr>
+                <td><a href="http://comicspriceguide.com/comic-book-grading">Comic Grading Guide</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
