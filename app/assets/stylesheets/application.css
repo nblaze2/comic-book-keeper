@@ -26,17 +26,15 @@ li .glyphicon {
 
 .jumbotron {
   padding: 30px;
-  margin-bottom: 30px;
   color: inherit;
   background-image: url('http://images.techtimes.com/data/images/full/222728/the-best-apps-to-download-for-those-who-cant-get-enough-of-comic-book-culture.jpg');
   background-position: center;
   font-family: Rockwell, serif;
 }
 
-/*.home-page {
-  background-image: url(https://cdn.pixabay.com/photo/2014/10/20/13/10/comics-495258_960_720.jpg);
-  background-attachment: fixed;
-}*/
+div.jumbotron {
+  margin: 0;
+}
 
 .pagination>li {
   display: inline;
@@ -98,4 +96,22 @@ iframe {
 
 .actions {
   margin-bottom: 10px;
+}
+
+h1.text-center {
+  margin: 0;
+  color: #151ba5;
+  font-weight: bold;
+}
+
+p.alert {
+  margin: 0;
+}
+
+.adv-title {
+  color: #117715;
+}
+
+.faq-title {
+  color: #4f1282;
 }

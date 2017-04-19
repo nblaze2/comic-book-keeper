@@ -14,9 +14,9 @@
   <%= javascript_include_tag 'application' %>
   <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.js"></script>
+
   <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
   <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
-
 </head>
 
 <body>
@@ -29,7 +29,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-      </button>
+        </button>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
@@ -48,13 +48,19 @@
           <li>
             <%= link_to 'FAQ', '/pages/faq' %>
           </li>
-          <li>
-            <%= link_to 'Grading Guide', 'http://comicspriceguide.com/comic-book-grading' %>
-          </li>
-          <li>
-            <%= link_to 'Pricing Guide', 'http://comicspriceguide.com/comic-book-search' %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Guides<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://comicspriceguide.com/comic-book-grading">Grading Guide</a>
+              </li>
+              <li>
+                <a href="http://comicspriceguide.com/comic-book-search">Pricing Guide</a>
+              </li>
+            </ul>
           </li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <% if current_user.admin? %>
@@ -100,10 +106,14 @@
   </div>
 </div>
 
-<div class="container">
 <p class="notice"><strong><%= notice %></strong></p>
 <p class="alert"><strong><%= alert %></strong></p>
+
+<div class="container">
   <%= yield %>
 </div>
+<script src="http://getbootstrap.com/assets/js/jquery.js"></script>
+
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

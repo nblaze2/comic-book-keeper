@@ -39,6 +39,9 @@
 
 <br/>
 
-<%= link_to 'Back', user_collectibles_path(@collectible) %>
+
+<%= link_to user_collectibles_path(@collectible), :class => "btn btn-primary btn-lg" do %>
+	Back
+<% end %>
 
 </div>

@@ -1,4 +1,4 @@
-<h1>Advanced Search</h1>
+<h1 class="adv-title">Advanced Search</h1>
 
 <%= form_for [@user, @search] do |s| %>
 
@@ -32,4 +32,8 @@
   </div>
 <% end %>
 <br>
-<%= link_to 'Back', user_collectibles_path(current_user) %>
+<div>
+  <%= link_to user_collectibles_path(current_user), :class => "btn btn-primary btn-lg" do %>
+  	Back
+  <% end %>
+</div>
