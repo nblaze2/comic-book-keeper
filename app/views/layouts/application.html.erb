@@ -105,9 +105,23 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <span class="success_msgs">
+    <% if notice %>
+      <p class="alert alert-success">
+          <strong><%= notice %></strong>
+      </p>
+    <% end %>
+  </span>
 
-<p class="notice"><strong><%= notice %></strong></p>
-<p class="alert"><strong><%= alert %></strong></p>
+  <span class="error_msgs">
+    <% if alert %>
+      <p class="alert alert-danger">
+          <strong><%= alert %></strong>
+      </p> 
+    <% end %>
+  </span>
+</div>
 
 <div class="container">
   <%= yield %>
@@ -115,5 +129,9 @@
 <script src="http://getbootstrap.com/assets/js/jquery.js"></script>
 
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script>
+    setTimeout("$('.error_msgs').fadeOut('slow')", 6000)
+    setTimeout("$('.success_msgs').fadeOut('slow')", 3000)
+</script>
 </body>
 </html>
