@@ -32,10 +32,6 @@ li .glyphicon {
   font-family: Rockwell, serif;
 }
 
-div.jumbotron {
-  margin: 0;
-}
-
 .pagination>li {
   display: inline;
   padding: 0;
