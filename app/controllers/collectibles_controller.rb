@@ -4,15 +4,14 @@ class CollectiblesController < ApplicationController
   before_action :authenticate_user
 
   def index
+    @collectibles = current_user.view_collectibles(User.find(params[:user_id]))
     if params[:user_id]
       if current_user.admin?
         @user = User.find(params[:user_id])
-        @collectibles = @user.collectibles.search(params[:search])
-        @collectibles = @collectibles.order(name_of_item: :asc)
+        @collectibles = user_search
       else # should be elsif?
         @user = current_user
-        @collectibles = @user.collectibles.search(params[:search])
-        @collectibles = @collectibles.order(name_of_item: :asc)
+        @collectibles = user_search
       end
     else
       redirect_to new_user_session_path, notice: 'You must be signed in.'
@@ -76,6 +75,10 @@ class CollectiblesController < ApplicationController
       :publisher, :writer, :cover_artist,
       :artist, :artist2, :artist3, :condition,
       :est_value, :notes)
+  end
+
+  def user_search
+    @user.collectibles.search(params[:search]).order(name_of_item: :asc)
   end
 
   def authenticate_user

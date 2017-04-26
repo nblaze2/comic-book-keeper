@@ -8,6 +8,9 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
   has_many :collectibles, dependent: :destroy
 
+  def view_collectibles(user)
+    user ? user.collectibles : collectibles
+  end
 
   def admin?
     admin

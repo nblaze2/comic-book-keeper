@@ -17,7 +17,7 @@ class Collectible < ApplicationRecord
   validates :artist, length: { maximum: 75 }
   validates :artist2, length: { maximum: 75 }
   validates :artist3, length: { maximum: 75 }
-  validates :condition, inclusion: { in: %w(NM VF FN VG GD FR PR) }, allow_nil: true
+  validates :condition, length: { maximum: 25 }
   validates :est_value, numericality: true, allow_nil: true
   validates :notes, length: { maximum: 500 }
 
