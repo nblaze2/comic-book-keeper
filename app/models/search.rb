@@ -13,6 +13,7 @@ class Search < ApplicationRecord
     artist ILIKE :search OR artist2 ILIKE :search OR
     artist3 ILIKE :search OR cover_artist ILIKE :search
     OR notes ILIKE :search', search: "%#{keywords}%") if keywords.present?
+    collectibles = collectibles.where(["media LIKE ?", media]) if media.present?
     collectibles = collectibles.where(["publisher LIKE ?", publisher]) if publisher.present?
     collectibles = collectibles.where(["year = ?", year]) if year.present?
     collectibles = collectibles.where(["est_value >= ?", min_price]) if min_price.present?

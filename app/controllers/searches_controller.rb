@@ -3,6 +3,7 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
+    @media = Collectible.distinct.pluck(:media)
     @publishers = Collectible.distinct.pluck(:publisher)
     @conditions = Collectible.distinct.pluck(:condition)
   end
@@ -22,6 +23,6 @@ class SearchesController < ApplicationController
   end
 
   def search_params
-    params.require(:search).permit(:keywords, :publisher, :min_price, :max_price, :year, :condition)
+    params.require(:search).permit(:keywords, :media, :publisher, :min_price, :max_price, :year, :condition)
   end
 end
