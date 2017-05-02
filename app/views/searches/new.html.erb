@@ -8,10 +8,12 @@
   </div>
 
   <br>
-  <div class="field">
-    <%= s.label :user %><br>
-    <%= s.select :user, options_for_select(@users), :include_blank => true %>
-  </div>
+  <% if current_user.admin? %>
+    <div class="field">
+      <%= s.label :user %><br>
+      <%= s.collection_select :name, @users, :name, :name %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= s.label :media %><br>

@@ -1,14 +1,8 @@
 class Search < ApplicationRecord
 
   def search_collectibles(user)
-    # if user.admin?
-    #   binding.pry
-    #   user = User.find(params[:user_id])
-    #   collectibles = user.collectibles
-    # else
-      # collectibles = user.collectibles
-    # end
 
+    collectibles = user.collectibles
     collectibles = collectibles.where('name_of_item ILIKE :search OR
     story_title ILIKE :search OR writer ILIKE :search OR
     artist ILIKE :search OR artist2 ILIKE :search OR

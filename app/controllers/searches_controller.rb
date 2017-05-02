@@ -3,19 +3,21 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
-    @users = User.distinct.pluck(:name)
+    @users = User.all.distinct
     @media = Collectible.distinct.pluck(:media)
     @publishers = Collectible.distinct.pluck(:publisher)
     @conditions = Collectible.distinct.pluck(:condition)
   end
 
   def create
-    binding.pry
     if current_user.admin?
-      # @user =
+      @user = User.where(name: "#{search_params[:name]}")
+      @search = Search.create(search_params)
+      redirect_to user_search_path(@user[0].id, @search)
+    else
+      @search = Search.create(search_params)
+      redirect_to user_search_path(current_user, @search)
     end
-    @search = Search.create(search_params)
-    redirect_to user_search_path(current_user, @search)
   end
 
   def show
@@ -24,10 +26,10 @@ class SearchesController < ApplicationController
 
   private
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find_by(id: params[:user_id])
   end
 
   def search_params
-    params.require(:search).permit(:user_id, :keywords, :media, :publisher, :min_price, :max_price, :year, :condition)
+    params.require(:search).permit(:name, :keywords, :media, :publisher, :min_price, :max_price, :year, :condition)
   end
 end
