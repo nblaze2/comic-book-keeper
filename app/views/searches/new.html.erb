@@ -8,9 +8,21 @@
   </div>
 
   <br>
+  <% if current_user.admin? %>
+    <div class="field">
+      <%= s.label :user %><br>
+      <%= s.collection_select :name, @users, :name, :name %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= s.label :media %><br>
+    <%= s.select :media, options_for_select(@media), :include_blank => true %>
+  </div>
+
   <div class="field">
     <%= s.label :publisher %><br>
-    <%= s.select :publisher, options_for_select(@publishers), :include_blank => true %>
+    <%= s.select :publisher, options_for_select(@publishers.compact.sort), :include_blank => true %>
   </div>
 
   <div class="field">
