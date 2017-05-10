@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
   <%= javascript_include_tag 'application' %>
@@ -35,14 +34,12 @@
         <ul class="nav navbar-nav">
           <li>
             <% if user_signed_in? %>
-            <%= link_to 'Collectibles Index', user_collectibles_path(current_user) %>
-            <% else %>
-            <%= link_to 'Collectibles Index', new_user_session_path %>
+              <%= link_to 'Collectibles Index', user_collectibles_path(current_user) %>
             <% end %>
           </li>
           <li>
             <% if user_signed_in? %>
-            <%= link_to 'Advanced Search', new_user_search_path(current_user) %>
+              <%= link_to 'Advanced Search', new_user_search_path(current_user) %>
             <% end %>
           </li>
           <li>
@@ -118,7 +115,7 @@
     <% if alert %>
       <p class="alert alert-danger">
           <strong><%= alert %></strong>
-      </p> 
+      </p>
     <% end %>
   </span>
 </div>

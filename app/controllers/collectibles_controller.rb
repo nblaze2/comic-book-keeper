@@ -1,12 +1,11 @@
 class CollectiblesController < ApplicationController
   before_action :set_collectible, only: [:show, :edit, :update, :destroy]
   before_action :set_user, except: [:index]
-  before_action :set_user_index, only: [:index]
   before_action :authenticate_user
 
   def index
-    # @collectibles = current_user.view_collectibles(User.find(params[:user_id]))
-
+    @user = set_user_index
+    @collectibles = @user.collectibles.search(params[:search]).order(name_of_item: :asc)
   end
 
   def show
@@ -73,22 +72,13 @@ class CollectiblesController < ApplicationController
   end
 
   def set_user_index
-    if params[:user_id]
-      if current_user.admin?
-        @user = User.find(params[:user_id])
-        @collectibles = user_search
-      else
-        @user = current_user
-        @collectibles = user_search
-      end
-    else
-      redirect_to new_user_session_path, notice: 'You must be signed in.'
-    end
+    current_user.admin? ? User.find(params[:user_id]) : current_user
   end
 
   def authenticate_user
     if !user_signed_in?
-      redirect_to new_user_session_path, notice: "You must be logged in."
+      flash[:notice] = 'You must be signed in.'
+      redirect_to new_user_session_path
     end
   end
 

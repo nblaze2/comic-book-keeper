@@ -1,27 +1,68 @@
 
 <h1>ADMIN TOOLS</h1>
 
-<h2 class="table-title">Users</h2>
+<h3 class="table-title">Users</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<div class="well">
+  <table class="table">
+    <thead>
       <tr>
+        <th>id #</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th style="width: 36px;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
         <td><strong><%= user.name %></strong></td>
         <td><%= user.email %></td>
         <% unless user.admin? %>
-          <td><%= link_to 'View Collectibles', user_collectibles_path(user.id) %></td>
-          <td><%= link_to 'Delete User', user_path(user), method: :delete %></td>
+        <td>
+          <%= link_to user_collectibles_path(user.id) do %>
+          <button class="btn btn-primary btn-xs" data-title="View Collectibles" data-toggle="modal" data-target="#edit" >
+            <span class="glyphicon glyphicon-pencil"></span></button>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_path(user), method: :delete do %>
+            <button class="btn btn-danger btn-xs" data-title="Delete User" data-toggle="modal" data-target="#confirm-delete" data-backdrop="static" data-keyboard="false">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <% end %>
+          </td>
+          <% end %>
+        </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-hidden="true" onclick="$('#myModal').modal({'backdrop': 'static'});"></button>
+            <h3 class="modal-title" id="myModalLabel">Delete Confirmation</h3>
+          </div>
+          <div class="modal-body">
+            <p class="error-text">Are you sure you want to delete the user?</p>
+            <p class="delete-user"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+            <a href="#" class="btn btn-danger btn-ok" onclick="$('#myModal').modal({'backdrop': 'static'});">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+      $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+
+      $('.delete-user').html('Delete User: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+    });
+    </script>
